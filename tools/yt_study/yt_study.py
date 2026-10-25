@@ -66,7 +66,8 @@ def download(url, out_root, lang, browser=None):
         "merge_output_format": "mp4",
         "writesubtitles": True,
         "writeautomaticsub": True,
-        "subtitleslangs": [lang, f"{lang}.*"],
+        # only the original track: "en.*" would also pull dozens of auto-translations and trip a 429
+        "subtitleslangs": [lang, f"{lang}-orig"],
         "subtitlesformat": "vtt",
         "noprogress": True,
         **base,
@@ -91,13 +92,13 @@ def parse_vtt(path):
     def secs(h, m, s):
         return int((h or "0:")[:-1]) * 3600 + int(m) * 60 + float(s)
 
+    def clean(line):
+        line = re.sub(r"<[^>]+>", "", line)
+        return html.unescape(re.sub(r"\s+", " ", line)).strip()
+
     def flush():
         if start is not None and lines:
-            text = " ".join(lines)
-            text = re.sub(r"<[^>]+>", "", text)
-            text = html.unescape(re.sub(r"\s+", " ", text)).strip()
-            if text:
-                cues.append((start, end, text))
+            cues.append((start, end, [c for c in map(clean, lines) if c]))
 
     for raw in Path(path).read_text(encoding="utf-8", errors="ignore").splitlines():
         m = stamp.search(raw)
@@ -107,20 +108,19 @@ def parse_vtt(path):
             lines = []
         elif raw.strip() and start is not None and not raw.startswith(("NOTE", "WEBVTT", "Kind:", "Language:")):
             lines.append(raw.strip())
-        elif not raw.strip():
+        elif raw.rstrip("\r") == "":  # cue separator; whitespace-only lines are caption padding
             flush()
             start, lines = None, []
     flush()
 
-    # auto captions repeat the previous line at the top of each cue; keep only new words
-    out, prev = [], ""
-    for s, e, t in cues:
-        if t == prev:
-            continue
-        new = t[len(prev):].strip() if t.startswith(prev) else t
+    # auto captions roll: each cue repeats the line before it, and tiny 10 ms cues repeat
+    # the whole screen. Keep each line once, the first time it appears.
+    out, seen = [], []
+    for s, e, cue_lines in cues:
+        new = [ln for ln in cue_lines if ln not in seen]
+        seen = (seen + new)[-4:]
         if new:
-            out.append((s, e, new))
-        prev = t
+            out.append((s, e, " ".join(new)))
     return out
 
 
