@@ -1,56 +1,39 @@
 # Face-free styles: overview
 
-Six visual styles that never depend on a face or on drawing the same character twice. Each one is a standalone guide that works for any channel: swap the palette and the props, keep the rules.
-
-## The six
-
-| Style | Guide | The character is... | Built with | Image credits per episode | Best for |
-|---|---|---|---|---|---|
-| Cut Paper Noir | [cut-paper-noir.md](cut-paper-noir.md) | a black silhouette with dot eyes and one feature | Image model + compositor | about 10 to 20 | Titles, thumbnails, covers, threat and tragedy |
-| Silhouette Theatre (WHO AM I?) | the power-channel-episode skill | a black puppet in profile, lit from behind | Image model (puppet kit) + Remotion light | about 5 to 15 | Mystery, biography, emotion |
-| **Isotype Ledger** | [isotype-ledger.md](isotype-ledger.md) | the same pictogram as everyone, plus one hat and the accent colour | **Code only (SVG + Remotion)** | **0** | Money, scale, careers, org charts, book interiors |
-| Evidence Table | [evidence-table.md](evidence-table.md) | his objects and his sleeve cuff, seen from above | Image model for objects, code for documents | about 7 to 10 per character, then reused | Deals, crimes, documents, artefacts, thumbnails |
-| Blueprint | [blueprint.md](blueprint.md) | a tiny labelled scale figure; the plan is the hero | Mostly code, 1 to 3 generated plans | 1 to 3 | Heists, escapes, routes, ships, machines |
-| Game Board | [game-board.md](game-board.md) | a game token with one hat, in one colour | Code board + 1 generated token per character | 1 token per character, 2 to 4 board pieces | Journeys, rivalries, territory, series casts |
+Ten visual styles that never depend on a face or on drawing the same face twice. Each is a standalone guide that works for any channel: swap the palette and the props, keep the rules. See them all on the style board (face-free-style-board.html, one sample frame each).
 
 ## Recommendation
 
-**Make Isotype Ledger the workhorse and keep Cut Paper Noir for the big moments.**
+**Wooden Manikin for the people, animated in MiniMax. Isotype Ledger for the numbers, animated in Remotion.**
 
-- **Zero drift, zero credits.** The cast is one SVG library drawn once. Nothing is generated per episode, which matters with about 40 Recraft credits left and Scenario near its free limit.
-- **It is the 1950s training film.** Pictogram charts of employees, rows of coins and org charts are exactly what a company training film showed. The voice ("Here's Bob") and the picture finally say the same thing.
-- **It carries the jokes.** Promotion as a figure moving up a row, "early retirement" as a greyed-out figure, a fortune as a row of coins: the deadpan is in the counting.
-- **It prints.** Book interiors are black on cream; Isotype was designed for print and survives black and white with no extra work.
-- **It travels.** A finance, history or explainer channel reuses the same components with a new palette and a few new symbols.
-- **Where it is weak** (emotion, atmosphere, deaths), Cut Paper Noir takes over for 10 to 20 percent of the runtime: the title card, the thumbnail, the arrest, the exit interview. That split also caps image generation at a handful of frames per episode.
+- The manikin is a training-film dummy: "Here's Bob" becomes a faceless wooden figure in Capone's fedora. One base figure is the whole cast, so nothing drifts; each outlaw is a costume sheet.
+- Jointed wood is one of the easiest things for a video model to move without warping.
+- Isotype handles money, promotions and counts at 0 credits and prints in black and white for the books.
+- Keep every word out of the art; all text, stamps and career files are added in Remotion.
 
-Second choice: **Evidence Table**, if a richer, more illustrated look is wanted. It needs credits per character, but objects stay consistent far better than faces.
+Second choices: Cut Paper Noir for titles and thumbnails; Neon Night or Travel Poster for atmosphere and establishing shots.
 
-## What this changes for Dream Job
+## The ten
 
-- The "one model sheet per outlaw" rule becomes "one symbol attribute and one silhouette per outlaw": a hat for Isotype, a silhouette for Cut Paper Noir.
-- Thumbnails: the Cut Paper Noir silhouette on the career file with the red stamp, which already fits the thumbnail rule.
-- Remotion: three components cover most of an episode: `SymbolRow`, `Chart` (baseline, title, unit key) and `CareerFile`.
+| Style | Guide | The character is... | Credits | In MiniMax | Best for |
+|---|---|---|---|---|---|
+| **Wooden Manikin** | wooden-manikin.md | a faceless wooden manikin in a costume | 1 sheet per character, ~1 per shot | Very good | People doing things |
+| **Isotype Ledger** | isotype-ledger.md | a pictogram with one hat | 0 (code) | Don't; Remotion | Numbers, careers, org charts |
+| Cut Paper Noir | cut-paper-noir.md | a silhouette with dot eyes | ~10–20 per episode | Very good | Titles, thumbnails, threat |
+| Neon Night | neon-night.md | a dark shape from behind; signs tell the story | ~1 per shot | Excellent | Crime, nightlife, mood |
+| Turned Away | turned-away.md | a back, a hat, a coat | ~1 per shot | Very good (cut turn-arounds) | Biography, trials, exits |
+| Tin Toy Town | tin-toy-town.md | a wooden peg with a hat | ~3 refs per episode + 1 per shot | Excellent | Heists, chases, empires |
+| Travel Poster | travel-poster.md | too small to have a face | ~1 per shot | Excellent | Establishing shots, journeys |
+| Evidence Table | evidence-table.md | his objects and his sleeve | ~7–10 per outlaw | Good (hands may warp) | Deals, documents |
+| Game Board | game-board.md | a game token | ~1 per character | Fair | Journeys, rivalries |
+| Blueprint | blueprint.md | a tiny scale figure | 1–3 per episode | Don't; Remotion | Heists, escapes, plans |
 
-## Samples (built in code, no credits)
+Silhouette Theatre stays with WHO AM I? and is left out here so the two channels don't share a look.
 
-- [face-free-samples/isotype-ledger-sample.png](face-free-samples/isotype-ledger-sample.png): "Promotion, 1925", the boss row and an early retirement.
-- [face-free-samples/blueprint-sample.png](face-free-samples/blueprint-sample.png): a bank floor plan with a tunnel route.
-- [face-free-samples/make-samples.js](face-free-samples/make-samples.js): the script that draws them (Playwright + SVG); the same shapes port straight to Remotion.
+## Rules for every MiniMax shot
 
-Both samples are illustrative; no data or plan in them is sourced.
+Judgement, not yet tested. No text in the frame, one motion per clip, describe camera and motion only, name the year for anything historical, and QA the contact sheet for extra limbs, faces appearing, duplicated objects and melting edges.
 
-## Animating with MiniMax (image-to-video)
+## Samples
 
-Judgement, not yet tested. Face-free frames suit video models because there is no face to morph.
-
-| Style | Send to MiniMax? | How |
-|---|---|---|
-| Isotype Ledger | No | Animate in Remotion; exact counting and snapping is the point |
-| Cut Paper Noir | Yes, best fit | Slow pushes, smoke, paper falling or fluttering; one move per clip |
-| Evidence Table | Yes, objects | Smoke, coins sliding, phone ringing; keep hand moves short or in Remotion |
-| Blueprint | No | Draw-on lines and route traces in Remotion |
-| Game Board | Partly | Slow board pans, one token moving; exact hops in Remotion |
-| Silhouette Theatre | Yes | Solid silhouettes, light that pulses and flickers |
-
-Rules for every MiniMax shot: no text in the frame (add it in Remotion after), one motion per clip, describe camera and motion only, and QA the contact sheet for extra limbs, duplicated objects and melting edges.
+All in face-free-samples/. Isotype and Blueprint were drawn in code (make-samples.js); the rest are single untuned Recraft tests at 1 credit each. Figures and plans are illustrative, not sourced.
