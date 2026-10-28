@@ -39,3 +39,18 @@ Second choice: **Evidence Table**, if a richer, more illustrated look is wanted.
 - [face-free-samples/make-samples.js](face-free-samples/make-samples.js): the script that draws them (Playwright + SVG); the same shapes port straight to Remotion.
 
 Both samples are illustrative; no data or plan in them is sourced.
+
+## Animating with MiniMax (image-to-video)
+
+Judgement, not yet tested. Face-free frames suit video models because there is no face to morph.
+
+| Style | Send to MiniMax? | How |
+|---|---|---|
+| Isotype Ledger | No | Animate in Remotion; exact counting and snapping is the point |
+| Cut Paper Noir | Yes, best fit | Slow pushes, smoke, paper falling or fluttering; one move per clip |
+| Evidence Table | Yes, objects | Smoke, coins sliding, phone ringing; keep hand moves short or in Remotion |
+| Blueprint | No | Draw-on lines and route traces in Remotion |
+| Game Board | Partly | Slow board pans, one token moving; exact hops in Remotion |
+| Silhouette Theatre | Yes | Solid silhouettes, light that pulses and flickers |
+
+Rules for every MiniMax shot: no text in the frame (add it in Remotion after), one motion per clip, describe camera and motion only, and QA the contact sheet for extra limbs, duplicated objects and melting edges.
