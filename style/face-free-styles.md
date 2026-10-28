@@ -1,6 +1,6 @@
 # Face-free styles: overview
 
-Ten visual styles that never depend on a face or on drawing the same face twice. Each is a standalone guide that works for any channel: swap the palette and the props, keep the rules. See them all on the style board (face-free-style-board.html, one sample frame each).
+Fifteen visual styles that never depend on a face or on drawing the same face twice. Each is a standalone guide that works for any channel: swap the palette and the props, keep the rules. See them all on the style board (face-free-style-board.html, one sample frame each).
 
 ## Recommendation
 
@@ -11,9 +11,9 @@ Ten visual styles that never depend on a face or on drawing the same face twice.
 - Isotype handles money, promotions and counts at 0 credits and prints in black and white for the books.
 - Keep every word out of the art; all text, stamps and career files are added in Remotion.
 
-Second choices: Cut Paper Noir for titles and thumbnails; Neon Night or Travel Poster for atmosphere and establishing shots.
+Most on-brand wildcard: Office Supply Cast, the training-room desk playing the story. Second choices: Cut Paper Noir for titles and thumbnails; Neon Night or Travel Poster for atmosphere and establishing shots.
 
-## The ten
+## The fifteen
 
 | Style | Guide | The character is... | Credits | In MiniMax | Best for |
 |---|---|---|---|---|---|
@@ -27,6 +27,11 @@ Second choices: Cut Paper Noir for titles and thumbnails; Neon Night or Travel P
 | Evidence Table | evidence-table.md | his objects and his sleeve | ~7–10 per outlaw | Good (hands may warp) | Deals, documents |
 | Game Board | game-board.md | a game token | ~1 per character | Fair | Journeys, rivalries |
 | Blueprint | blueprint.md | a tiny scale figure | 1–3 per episode | Don't; Remotion | Heists, escapes, plans |
+| Empty Suit | empty-suit.md | his clothes with nobody inside | ~1 per shot | Very good | Careers, satire |
+| Office Supply Cast | office-supplies.md | a stapler, a paper clip, a stamp | ~1 per shot | Excellent | Dream Job, workplace |
+| Origami | origami.md | a folded figure with a folded hat | ~1 per shot | Good | Pirates, journeys |
+| Sand on Glass | sand-on-glass.md | a sand outline | ~1 per shot | Excellent | Transitions, memories |
+| Felt and Stitch | felt-and-stitch.md | a faceless felt doll | ~1 per shot | Very good | Robbers, con artists |
 
 Silhouette Theatre stays with WHO AM I? and is left out here so the two channels don't share a look.
 
